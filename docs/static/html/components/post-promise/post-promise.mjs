@@ -691,8 +691,6 @@ customElements.define('post-promise',
       async function modules (obj) {
 
 
-
-
       }
     }
   })

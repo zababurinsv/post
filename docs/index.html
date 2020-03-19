@@ -27,26 +27,10 @@
     </varan-header>
     <hr>
     <div id="components">
-<!--        <manager-menu></manager-menu>-->
-<!--        <manager-board></manager-board>-->
-<!--        <manager-trade>-->
-<!--            <varan-card-news></varan-card-news>-->
-<!--            <manager-player slot="player-left"></manager-player>-->
-<!--            <manager-player slot="player-right"></manager-player>-->
-<!--            <manager-order slot="order-left"></manager-order>-->
-<!--            <manager-order slot="order-right"></manager-order>-->
-<!--        </manager-trade>-->
-<!--            <manager-deed></manager-deed>-->
-<!--        <manager-community></manager-community>-->
-<!--        <manager-control></manager-control>-->
+        <post-office></post-office>
+        <post-promise></post-promise>
     </div>
     <hr>
-<!--    <div id="info">-->
-<!--        Console-->
-<!--        <div class="container">-->
-<!--            <codemirror-main></codemirror-main>-->
-<!--        </div>-->
-<!--    </div>-->
     <div id="tests">
         <ul id="mocha"></ul>
     </div>
@@ -55,7 +39,8 @@
 </body>
 <script type="module" src="./static/html/components/varan-header/varan-header.mjs" async></script>
 <script type="module" src="./static/html/components/varan-footer/varan-footer.mjs" async></script>
-<script type="module" src="./static/html/components/codemirror-main/codemirror-main.mjs" async></script>
+<script type="module" src="./static/html/components/post-promise/post-promise.mjs" async></script>
+<script type="module" src="./static/html/components/post-office/post-office.mjs" async></script>
 <script type="module">
     import tests from '/static/html/components/component_modules/tests/tests.mjs'
     tests()
@@ -75,7 +60,7 @@
     }
     div#components{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         height: var(--height);
         flex-wrap: wrap;
         margin: auto;
