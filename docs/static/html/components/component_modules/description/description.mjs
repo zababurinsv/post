@@ -1,6 +1,7 @@
 import colors from '/static/html/components/component_modules/colors/colors.mjs'
 import colorlog from '/static/html/components/component_modules/colorLog/colorLog.mjs'
 import action from '/static/html/components/component_modules/action/relation-monopoly.mjs'
+import postOffice from '/static/html/components/component_modules/action/relation-postOffice.mjs'
 import isEmpty from '/static/html/components/component_modules/isEmpty/isEmpty_t.mjs'
 export default (...args)=>{
     return  new Promise(async (resolve, reject) => {
@@ -13,6 +14,7 @@ export default (...args)=>{
         object.pointers.push('%o')
         object.pointers.push('%O')
         object.pointers.push('%c')
+        object.action = {}
         object.description = {}
         object.description.property = {}
         object.description.relation = {}
@@ -36,6 +38,22 @@ export default (...args)=>{
                 }else{ out = true }
 
                 resolve(out)
+            })
+        }
+        function sendToQueue(actions) {
+            return new Promise(async (resolve, reject) => {
+                for(let i=0; i< actions.length;i++){
+                    object.description.substrate.queue.push({
+                        _:object.description.substrate._,
+                        end: (i === actions.length -1),
+                        console:object.description.console,
+                        property:actions[i].property,
+                        color: object.description.color,
+                        substrate: actions[i].substrate,
+                        relation:object.description.relation,
+                    })
+                }
+                resolve({send:'sendToQueue true'})
             })
         }
         function addEventsQueue(object) {
@@ -71,6 +89,23 @@ export default (...args)=>{
                             }
                         }
                         break
+                    case 'authtorization':
+                        if(isNotEmptyActions(object['action'][`${object.relation}`], object)){
+
+                            sendToQueue(object['action'][`${object['description']['relation']}`])
+
+                        }else{
+                            object.description.substrate.queue.push({
+                                _:object.description.substrate._,
+                                end: true,
+                                console:object.description.console,
+                                property:object.description.property,
+                                color: object.description.color,
+                                substrate: object.description.substrate,
+                                relation:object.description.relation,
+                            })
+                        }
+                        break
                     default:
                         console.warn('не обрабатывается добавление в очередь --->',object.description.relation.toLowerCase(),'--->', object )
                         break
@@ -98,12 +133,18 @@ export default (...args)=>{
                 }
 
                 if(args[i+1] === '*)'){
+                    object.action[`${object.description.relation}`] = undefined
                     for(let j =0; j < args[i].length;j++ ){
                         if(args[i][j].hasOwnProperty('_')){
                             object.description.substrate._ = args[i][j]._
                         }
                         if(args[i][j].hasOwnProperty('task')){
                            object.description.substrate.queue = args[i][j].task
+                        }else{
+
+                            if(args[i][j].hasOwnProperty(`${object.description.relation}`)){
+                                object.action[`${object.description.relation}`] = args[i][j][`${object.description.relation}`]
+                            }
                         }
                     }
                 }

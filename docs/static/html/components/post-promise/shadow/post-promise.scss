@@ -2,11 +2,36 @@
 @import "/home/sergey/Desktop/telegram/css/util/media_new.scss";
 @import "/home/sergey/Desktop/telegram/css/util/interface";
 
+@mixin figure(){
+    @include display(column, nowrap, space-evenly, center, stretch);
+    margin: 0;
+    img {
+      border: 0.3vw solid #8b8e4b; /* Параметры рамки */
+      box-sizing: border-box;
+      padding: 1vw;
+    }
+    div {
+      margin-bottom: 0; /* Отступ снизу */
+      @include fonts(8);
+      font-family: Roboto,serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: inset 0vw 0vw 1vw 0px #7694f4;
+      box-sizing: border-box;
+      padding: 2vw;
+      text-align: center;
+    }
+    figcaption{
+      @include p();
+    }
+
+
+}
 
 @mixin p(){
-
   @include border();
-  margin-top: 0;
+  margin: 1vw 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,40 +57,6 @@
 
 }
 
-
-@mixin palyer() {
-
-  label{
-    @include display(column, nowrap, space-evenly, center, stretch);
-    width: 100%;
-    //align-items: center;
-    @include fonts(8);
-    font-family: Roboto,serif;
-    margin: 0.25vw;
-
-  }
-  div.option{
-    @include display(row, nowrap, space-evenly, center, stretch);
-    input{
-      flex-grow: 1;
-      @include borderClean();
-      @include fonts(8);
-      font-family: Roboto,serif;
-      margin: 0.25vw;
-      cursor: text;
-    }
-    select{
-      flex-grow: 1;
-      @include fonts(8);
-      @include borderClean();
-      font-family: Roboto,serif;
-      margin: 0.25vw;
-
-    }
-  }
-}
-
-
 section#post-promise{
   display: flex;
   box-sizing: border-box;
@@ -77,28 +68,7 @@ section#post-promise{
   padding: 5vw;
 
   figure {
-    @include display(column, nowrap, space-evenly, center, stretch);
-    margin: 0;
-    img {
-      border: 0.3vw solid #8b8e4b; /* Параметры рамки */
-      box-sizing: border-box;
-      padding: 1vw;
-    }
-    p {
-      margin-bottom: 0; /* Отступ снизу */
-      @include fonts(8);
-      font-family: Roboto,serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-shadow: inset 0vw 0vw 1vw 0px #7694f4;
-      box-sizing: border-box;
-      padding: 2vw;
-      text-align: center;
-    }
-    figcaption{
-      @include p();
-    }
+      @include figure();
   }
 }
 

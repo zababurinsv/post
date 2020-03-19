@@ -2,6 +2,7 @@ import isEmpty from '/static/html/components/component_modules/isEmpty/isEmpty_t
 import description from '/static/html/components/component_modules/description/description.mjs'
 import colorlog from '/static/html/components/component_modules/colorLog/colorLog.mjs'
 import actions from '/static/html/components/component_modules/action/actions-monopoly.mjs'
+import postoffice from '/static/html/components/component_modules/action/actions-postOffice.mjs'
 let object = {}
 object.staticProperty = []
 let output = {}
@@ -14,9 +15,19 @@ object.setEventsAction = async (views, property, color, substrate, relation) => 
             case 'player':
                 resolve(await actions(views,property,color,substrate,relation))
                 break
+            case 'authtorization':
+                resolve(await postoffice(views,property,color,substrate,relation))
+                break
             default:
-                console.warn('нет акшена на это отношение --->', relation, '--->', views, property, color, substrate, relation)
-                resolve({warning: 'нет акшена на это отношение'})
+
+                console.warn(`queue.mjs ---> нет акшена на это отношение ---> ${relation}`)
+                resolve(await colorlog(views,{
+                    end:true,
+                    error:`queue.mjs ---> нет акшена на это отношение ---> ${relation}`
+                },color, {
+                    property:property,
+                    substrate:substrate
+                }, relation ))
                 break
         }
     })
@@ -36,7 +47,7 @@ let handler = {
                             clearTimeout(timerId);
                         }else{
                             if(obj[0].end){
-                               await object.setEventsAction(obj[0].console,{end:true, property:obj[0].property},obj[0].color, obj[0].substrate, obj[0].relation )
+                                await object.setEventsAction(obj[0].console,{end:true, property:obj[0].property},obj[0].color, obj[0].substrate, obj[0].relation )
                                 colorlog(obj[0].console,{ end:true, property:obj[0].property, },obj[0].color, obj[0].substrate, obj[0].relation )
                                 delete obj[0].substrate.queue
                                 document.dispatchEvent( new CustomEvent('typeScript-end', {

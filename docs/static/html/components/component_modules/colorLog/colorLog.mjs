@@ -19,7 +19,6 @@ export default async (show, message='time', color ='black', ...args) =>{
             if(typeof message === 'object'){
                if(message.hasOwnProperty('end') && message.end === true){
                    end = true
-                   message = message.property
                }
                 if(message.hasOwnProperty('assert') && message.assert === true){
                     console.assert(false,'%c%O' + args[args.length-1],'color:' + color,performance['now'](end, args[args.length-1], message),'[(', ...args.slice(0, args.length-1),'*)',message,']')
