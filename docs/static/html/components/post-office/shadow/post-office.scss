@@ -55,12 +55,8 @@ section#post-office{
       justify-content: center;
       box-sizing: border-box;
       padding: 0.3vw;
-      height: 18.2vw;
+      height: max-content;
 
-      iframe{
-        margin-bottom: 1vw;
-
-      }
     }
   }
   p{

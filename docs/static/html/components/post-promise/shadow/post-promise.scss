@@ -3,7 +3,7 @@
 @import "/home/sergey/Desktop/telegram/css/util/interface";
 
 @mixin figure(){
-    @include display(column, nowrap, space-evenly, center, stretch);
+    @include display(column, nowrap, space-between, center, stretch);
     margin: 0;
     img {
       border: 0.3vw solid #8b8e4b; /* Параметры рамки */
@@ -21,6 +21,10 @@
       box-sizing: border-box;
       padding: 2vw;
       text-align: center;
+      width: 100%;
+      img{
+        width: 20vw;
+      }
     }
     figcaption{
       @include p();
@@ -69,10 +73,20 @@ section#post-promise{
     @include p();
   }
 
-
-  figure {
+  div#wrapper{
+    @include display(row, nowrap, space-evenly, center, stretch);
+    figure {
       @include figure();
+    }
+    figure#left{
+      padding-right: 0.5vw;
+    }
+    figure#right{
+      padding-left: 0.5vw;
+    }
   }
+
+
   hr{
     box-shadow: inset 0vw 0vw 1vw 0px #7694f4;
     height: 0.3vw;
