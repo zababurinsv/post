@@ -1,7 +1,5 @@
 import colors from '/static/html/components/component_modules/colors/colors.mjs'
 import colorlog from '/static/html/components/component_modules/colorLog/colorLog.mjs'
-import action from '/static/html/components/component_modules/action/relation-monopoly.mjs'
-import postOffice from '/static/html/components/component_modules/action/relation-postOffice.mjs'
 import isEmpty from '/static/html/components/component_modules/isEmpty/isEmpty_t.mjs'
 export default (...args)=>{
     return  new Promise(async (resolve, reject) => {
@@ -27,7 +25,6 @@ export default (...args)=>{
             reject(obj)
         }
         function isNotEmptyActions(actions, object) {
-            return new Promise(async (resolve, reject) => {
                 let out = false
                 if(isEmpty(actions)){
                     colorlog(object.description.console, 'для этого отношения нет никаких действий' ,object.description.color,object.description.substrate, `${object.description.relation}`)
@@ -36,9 +33,7 @@ export default (...args)=>{
                         property:object.description.property,
                     }
                 }else{ out = true }
-
-                resolve(out)
-            })
+                return out
         }
         function sendToQueue(actions) {
             return new Promise(async (resolve, reject) => {
@@ -49,7 +44,9 @@ export default (...args)=>{
                         console:object.description.console,
                         property:actions[i].property,
                         color: object.description.color,
-                        substrate: actions[i].substrate,
+                        substrate:{
+                            [object.description.relation]:actions[i].substrate
+                        },
                         relation:object.description.relation,
                     })
                 }
@@ -60,6 +57,7 @@ export default (...args)=>{
             return new Promise(async (resolve, reject) => {
                 switch (object.description.relation.toLowerCase()) {
                     case 'button':
+                        console.assert(false)
                         if(isNotEmptyActions(action.button, object)){
                             for(let i=0; i< action.button.length;i++){
                                 object.description.substrate.queue.push({
@@ -90,7 +88,8 @@ export default (...args)=>{
                         }
                         break
                     case 'authtorization':
-                        if(isNotEmptyActions(object['action'][`${object.relation}`], object)){
+                        if(isNotEmptyActions(object['action'][`${object.description.relation}`], object)){
+
 
                             sendToQueue(object['action'][`${object['description']['relation']}`])
 

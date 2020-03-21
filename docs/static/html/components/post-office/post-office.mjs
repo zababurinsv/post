@@ -1,6 +1,6 @@
 import staticProperty  from '/static/html/components/component_modules/staticProperty/staticProperty.mjs'
 import postOffice from '/static/html/components/component_modules/postOffice/postOffice.mjs'
-import actionPost from '/static/html/components/component_modules/action/relation-postOffice.mjs'
+import r_post from '/static/html/components/component_modules/relation/postOffice.mjs'
 import setText from '/static/html/components/component_modules/setText/setText.mjs'
 import addEventListener from '/static/html/components/component_modules/addEventListener/addEventListener.mjs'
 import templateItem from '/static/html/components/component_modules/template/template.mjs'
@@ -693,9 +693,8 @@ customElements.define('post-office',
       async function modules (obj) {
 
 
-       let post = await postOffice()
-        // console.assert(false, actionPost)
-        post.authtorization(false,'Авторизация почты','1',actionPost,'authtorization')
+        let post = await postOffice()
+        post.authtorization(false,'Авторизация почты','1',r_post,'authtorization')
 
       }
     }

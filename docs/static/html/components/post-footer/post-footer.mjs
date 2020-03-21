@@ -1,6 +1,6 @@
 import staticProperty  from '/static/html/components/component_modules/staticProperty/staticProperty.mjs'
 import postOffice from '/static/html/components/component_modules/postOffice/postOffice.mjs'
-import actionPost from '/static/html/components/component_modules/action/relation-postOffice.mjs'
+import actionPost from '/static/html/components/component_modules/action/postOffice.mjs'
 import setText from '/static/html/components/component_modules/setText/setText.mjs'
 import addEventListener from '/static/html/components/component_modules/addEventListener/addEventListener.mjs'
 import templateItem from '/static/html/components/component_modules/template/template.mjs'
