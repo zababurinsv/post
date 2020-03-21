@@ -27,8 +27,18 @@
     </varan-header>
     <hr>
     <div id="components">
-        <post-office></post-office>
-        <post-promise></post-promise>
+        <div id="container">
+            <div id="left">
+                <post-line data-id="left"></post-line>
+            </div>
+            <div id="center">
+                <post-office></post-office>
+                <post-promise></post-promise>
+            </div>
+            <div id="rigth">
+                <post-line data-id="right"></post-line>
+            </div>
+        </div>
     </div>
     <hr>
     <div id="tests">
@@ -41,6 +51,7 @@
 <script type="module" src="./static/html/components/varan-footer/varan-footer.mjs" async></script>
 <script type="module" src="./static/html/components/post-promise/post-promise.mjs" async></script>
 <script type="module" src="./static/html/components/post-office/post-office.mjs" async></script>
+<script type="module" src="./static/html/components/post-line/post-line.mjs" async></script>
 <script type="module">
     import tests from '/static/html/components/component_modules/tests/tests.mjs'
     tests()
@@ -198,6 +209,17 @@
     div.container{
         width: 100%;
         margin: 1vw;
+    }
+    div#container{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1vw;
+        justify-content: space-between;
+    }
+    div#left, div#rigth{
+        width: 100%;
     }
 </style>
 </html>

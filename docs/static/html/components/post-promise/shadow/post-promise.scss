@@ -62,13 +62,21 @@ section#post-promise{
   box-sizing: border-box;
   @include display(column, nowrap, space-evenly, center, stretch);
   @include border();
+  padding: 5vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
   p{
     @include p();
   }
-  padding: 5vw;
+
 
   figure {
       @include figure();
+  }
+  hr{
+    box-shadow: inset 0vw 0vw 1vw 0px #7694f4;
+    height: 0.3vw;
+    width: 100%;
   }
 }
 

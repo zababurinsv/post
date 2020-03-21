@@ -51,18 +51,18 @@ export default (views,property,color,substrate,relation)=>{
             case 'authtorization':
                 (async (views,property,color,substrate,relation)=>{
 
-                    console.assert(false, substrate)
-               let login =   await fetch("https://api.dellin.ru/v1/customers/login.json", {
-                       method: "POST",
-                       headers: {
-                           'mode': 'no-cors'
-                       },
-                       body: JSON.stringify(substrate)
-                    });
-
-                    login = await login.json()
-
-                    console.assert(false, login)
+                    // console.assert(false, substrate)
+               // let login =   await fetch("https://api.dellin.ru/v1/customers/login.json", {
+               //         method: "POST",
+               //         headers: {
+               //             'mode': 'no-cors'
+               //         },
+               //         body: JSON.stringify(substrate)
+               //      });
+               //
+               //      login = await login.json()
+               //
+               //      console.assert(false, login)
 
 
                     // let json = (await Json(views))
