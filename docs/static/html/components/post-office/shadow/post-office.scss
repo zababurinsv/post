@@ -42,24 +42,27 @@ section#post-office{
   display: flex;
   flex-direction: column;
   margin: auto;
-  div.post-office{
-    box-shadow: inset 0vw 0vw 1vw 0px #7694f4;
-    display: flex;
-    width: max-content;
-    margin: auto;
-    width: 28vw;
-    justify-content: center;
+  div#wrapper{
     box-sizing: border-box;
-    padding: 0.3vw;
-    height: 18.2vw;
-    margin-bottom: 1vw;
+    padding: 1vw;
+    box-shadow: inset 0vw 0.1vw 0vw 0px #7694f4;
+    div.post-office{
+      box-shadow: inset 0vw 0vw 1vw 0px #7694f4;
+      display: flex;
+      width: max-content;
+      margin: auto;
+      width: 28vw;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: 0.3vw;
+      height: 18.2vw;
 
-    iframe{
-      margin-bottom: 1vw;
+      iframe{
+        margin-bottom: 1vw;
 
+      }
     }
   }
-
   p{
     @include p();
     width: 65%;
