@@ -28,7 +28,6 @@
   -moz-appearance: none;
   appearance: none;
   text-align-last:center;
-
 }
 :host{
   width: 44vw;
@@ -44,7 +43,6 @@ section#post-office{
   height: 100%;
 
   div.post-office{
-    //box-shadow: inset 0vw 0vw 1vw 0px #7694f4;
     display: flex;
     width: max-content;
     margin: auto;
